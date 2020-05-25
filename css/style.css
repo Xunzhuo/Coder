@@ -1,6 +1,6 @@
 body {
   background-color: #000;
-  background-image: url("/img/black.jpg");
+  background-image: url("http://picreso.oss-cn-beijing.aliyuncs.com/black.jpg");
   color: #d2d2d2;
   font-weight: 400;
   font-size: 14px;
@@ -891,7 +891,7 @@ hr {
 }
 .bg_while {
   background-color: #fff;
-  background-image: url("/img/white.jpg");
+  background-image: url("http://picreso.oss-cn-beijing.aliyuncs.com/white.jpg");
   color: #696969;
 }
 .el-radio,
