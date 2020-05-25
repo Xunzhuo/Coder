@@ -9,7 +9,7 @@
   </h3>
   <br>
   <h2>为简约、极简爱好者打造的Hexo主题</h2>
-  <img src="https://picreso.oss-cn-beijing.aliyuncs.com/hexocoder.png" />
+  <img src="https://github.com/xunzhuo/hexo-theme-coder/raw/master/source/doc/hexocoder.png" />
 </div>
 
 
@@ -40,26 +40,26 @@
 
 #### 黑色模式
 
-![](https://picreso.oss-cn-beijing.aliyuncs.com/gentle.png)
+![](https://github.com/xunzhuo/hexo-theme-coder/raw/master/source/doc/gentle.png)
 
 #### 白色模式
 
-![](https://picreso.oss-cn-beijing.aliyuncs.com/light.png)
+![](https://github.com/xunzhuo/hexo-theme-coder/raw/master/source/doc/light.png)
 
 ### Lady模式：
 
 #### Dark模式
 
-![](https://picreso.oss-cn-beijing.aliyuncs.com/lady1.png)
+![](https://github.com/xunzhuo/hexo-theme-coder/raw/master/source/doc/lady1.png)
 
 #### Light模式
 
-![](https://picreso.oss-cn-beijing.aliyuncs.com/lady2.png)
+![](https://github.com/xunzhuo/hexo-theme-coder/raw/master/source/doc/lady2.png)
 
 ### 手机端：
 
 <div align = "center">
-  <span> <img src="https://picreso.oss-cn-beijing.aliyuncs.com/phonesdsd.png" width="200" /> <img src="https://picreso.oss-cn-beijing.aliyuncs.com/phoness.png" width="200"  /></span>
+  <span> <img src="https://github.com/xunzhuo/hexo-theme-coder/raw/master/source/doc/phone1.png" width="200" /> <img src="https://github.com/xunzhuo/hexo-theme-coder/raw/master/source/doc/phone2.png" width="200"  /></span>
 </div>
 
 
@@ -73,7 +73,7 @@
 ### 1. 进入 /Hexo目录/themes：
 
 ``` shell
-git clone git@github.com:Xunzhuo/hexo-theme-coder.git coder
+git clone url coder
 ```
 
 ### 2. 修改Hexo目录下的**_config.yml** 的 **theme** 为 **coder**
