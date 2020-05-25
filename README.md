@@ -76,7 +76,7 @@
 git clone url coder
 ```
 
-### 2. 修改Hexo目录下的**_config.yml** 的 **theme** 为 **coder**
+### 2. 修改Hexo目录下的_config.yml 的 theme 为 coder
 
 ### 3. 修改配置
 
@@ -123,7 +123,7 @@ valine:
 
 # Coder后期计划
 
-闲暇时可能会不断扩展这个主题的功能，让Coder更实用～
+闲暇时可能会不断扩展这个主题的功能，让Coder更实用，更加定制化～
 
 如果你对这个项目感兴趣也可以一起合作🤝
 
