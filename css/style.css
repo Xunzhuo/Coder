@@ -1,5 +1,6 @@
 body {
-  background-color: #3a3e4a;
+  background-color: #000;
+  background-image: url("/img/black.jpg");
   color: #d2d2d2;
   font-weight: 400;
   font-size: 14px;
@@ -13,7 +14,7 @@ a {
 }
 a:focus,
 a:hover {
-  color: #699be9;
+  color: Chocolate;
   text-decoration: underline;
 }
 .footer {
@@ -98,7 +99,7 @@ hr {
   border-color: #58606b;
 }
 .posts .replay-btn {
-  background-color: #4b5e7b;
+  background-color: #6495ed;
   width: 40px;
   color: #fff;
   height: 40px;
@@ -890,7 +891,8 @@ hr {
 }
 .bg_while {
   background-color: #fff;
-  color: #51525d;
+  background-image: url("/img/white.jpg");
+  color: #696969;
 }
 .el-radio,
 .el-checkbox {
@@ -1162,10 +1164,10 @@ label.el-checkbox {
   background-color: #b0d7f5;
 }
 .el-switch.el-switch-blue>input[type="checkbox"]:checked+.el-switch-style {
-  background-color: #20a0ff;
+  background-color: #808080;
 }
 .el-switch.el-switch-blue>input[type="checkbox"]:checked[disabled]+.el-switch-style {
-  background-color: #b0d7f5;
+  background-color: #808080;
 }
 .el-switch.el-switch-green>input[type="checkbox"]:checked+.el-switch-style {
   background-color: #13ce66;
