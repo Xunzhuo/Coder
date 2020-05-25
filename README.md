@@ -73,7 +73,7 @@
 ### 1. 进入 /Hexo目录/themes：
 
 ``` shell
-git clone url coder
+git clone git@github.com:Xunzhuo/hexo-theme-coder.git coder
 ```
 
 ### 2. 修改Hexo目录下的_config.yml 的 theme 为 coder
