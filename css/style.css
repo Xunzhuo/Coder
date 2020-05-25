@@ -63,7 +63,7 @@ a:hover {
   text-align: center;
 }
 .jing {
-  color: #6d9ee7;
+  color: Chocolate;
 }
 .logot {
   font-weight: bold;
@@ -79,6 +79,9 @@ a:hover {
 }
 .logot .logo_3 {
   color: #be8355;
+}
+.words {
+  padding-top: 16px;
 }
 .navd {
   padding-top: 14px;
