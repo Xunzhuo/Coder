@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="renderer" content="webkit">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <meta name="google-site-verification" content="TZE0rZyIqLl10trYu3BWBWa1Vmz6HFwhb2OcNEK4u-s" />
+     <link rel="shortcut icon" href= /img/favicon.ico >
+    <title>
+        刘训灼的子站🏠
+    </title>
+    
+<link rel="stylesheet" href="/libs/highlight/styles/monokai-sublime.css">
+
+    
+<link rel="stylesheet" href="/libs/font-awesome/css/font-awesome.min.css">
+
+    
+<link rel="stylesheet" href="/css/style.css">
+
+<meta name="generator" content="Hexo 4.2.1"></head>
+<body id="bodyx">
+    <div class="hd posts">
+    <a href="/index.html"><i class="fa fa-home
+ replay-btn" aria-hidden="true"></i></a>
+    <div class="post-title">
+        <p>
+            RNN成长记(二)：文本分类🔥
+        </p>
+        <hr>
+    </div>
+    <div class="post-content">
+        <blockquote>
+<p>在第一篇文章中，我们看到了如何使用 TensorFlow 实现一个简单的 RNN 架构。现在我们将使用这些组件并将其应用到文本分类中去。主要的区别在于，我们不会像 CHAR-RNN 模型那样输入固定长度的序列，而是使用长度不同的序列。</p>
+</blockquote>
+<h2 id="文本分类"><a href="#文本分类" class="headerlink" title="文本分类"></a>文本分类</h2><p>这个任务的数据集选用了来自 Cornell 大学的语句情绪极性数据集，它包含了 5331 个正面和负面情绪的句子。这是一个非常小的数据集，但足够用来演示如何使用循环神经网络进行文本分类了。</p>
+<h2 id="预处理步骤"><a href="#预处理步骤" class="headerlink" title="预处理步骤"></a>预处理步骤</h2><ol>
+<li>清洗句子并切分成一个个 token；</li>
+<li>将句子转换为数值 token；</li>
+<li>保存每个句子的序列长。</li>
+</ol>
+<p><img src="https://picreso.oss-cn-beijing.aliyuncs.com/68747470733a2f2f7468656e657572616c70657273706563746976652e66696c65732e776f726470726573732e636f6d2f323031362f31302f73637265656e2d73686f742d323031362d31302d30352d61742d372d33322d33362d706d2e706e673f773d363230.png" alt=""></p>
+<p>如上图所示，我们希望在计算完成时立即对句子的情绪做出预测。引入额外的填充符会带来过多噪声，这样的话你模型的性能就会不太好。<strong>注意</strong>：我们填充序列的唯一原因是因为需要以固定大小的批量输入进 RNN。下面你会看到，使用动态 RNN 还能避免在序列完成后的不必要计算。</p>
+<h2 id="模型"><a href="#模型" class="headerlink" title="模型"></a>模型</h2><p>代码：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">model</span><span class="params">(object)</span>:</span></span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span><span class="params">(self, FLAGS)</span>:</span></span><br><span class="line"></span><br><span class="line">        <span class="comment"># 占位符</span></span><br><span class="line">        self.inputs_X = tf.placeholder(tf.int32,</span><br><span class="line">            shape=[<span class="literal">None</span>, <span class="literal">None</span>], name=<span class="string">'inputs_X'</span>)</span><br><span class="line">        self.targets_y = tf.placeholder(tf.float32,</span><br><span class="line">            shape=[<span class="literal">None</span>, <span class="literal">None</span>], name=<span class="string">'targets_y'</span>)</span><br><span class="line">        self.dropout = tf.placeholder(tf.float32)</span><br><span class="line"></span><br><span class="line">        <span class="comment"># RNN 单元</span></span><br><span class="line">        stacked_cell = rnn_cell(FLAGS, self.dropout)</span><br><span class="line"></span><br><span class="line">        <span class="comment"># RNN 输入</span></span><br><span class="line">        <span class="keyword">with</span> tf.variable_scope(<span class="string">'rnn_inputs'</span>):</span><br><span class="line">            W_input = tf.get_variable(<span class="string">"W_input"</span>,</span><br><span class="line">                [FLAGS.en_vocab_size, FLAGS.num_hidden_units])</span><br><span class="line"></span><br><span class="line">        inputs = rnn_inputs(FLAGS, self.inputs_X)</span><br><span class="line">        <span class="comment">#initial_state = stacked_cell.zero_state(FLAGS.batch_size, tf.float32)</span></span><br><span class="line"></span><br><span class="line">        <span class="comment"># RNN 输出</span></span><br><span class="line">        seq_lens = length(self.inputs_X)</span><br><span class="line">        all_outputs, state = tf.nn.dynamic_rnn(cell=stacked_cell, inputs=inputs,</span><br><span class="line">            sequence_length=seq_lens, dtype=tf.float32)</span><br><span class="line"></span><br><span class="line">        <span class="comment"># 由于使用了 seq_len[0]，state 自动包含了上一次的对应输出</span></span><br><span class="line">        <span class="comment"># 因为 state 是一个带有张量的元组</span></span><br><span class="line">        outputs = state[<span class="number">0</span>]</span><br><span class="line"></span><br><span class="line">        <span class="comment"># 处理 RNN 输出</span></span><br><span class="line">        <span class="keyword">with</span> tf.variable_scope(<span class="string">'rnn_softmax'</span>):</span><br><span class="line">            W_softmax = tf.get_variable(<span class="string">"W_softmax"</span>,</span><br><span class="line">                [FLAGS.num_hidden_units, FLAGS.num_classes])</span><br><span class="line">            b_softmax = tf.get_variable(<span class="string">"b_softmax"</span>, [FLAGS.num_classes])</span><br><span class="line"></span><br><span class="line">        <span class="comment"># Logits</span></span><br><span class="line">        logits = rnn_softmax(FLAGS, outputs)</span><br><span class="line">        probabilities = tf.nn.softmax(logits)</span><br><span class="line">        self.accuracy = tf.equal(tf.argmax(</span><br><span class="line">            self.targets_y,<span class="number">1</span>), tf.argmax(logits,<span class="number">1</span>))</span><br><span class="line"></span><br><span class="line">        <span class="comment"># 损失函数</span></span><br><span class="line">        self.loss = tf.reduce_mean(</span><br><span class="line">            tf.nn.sigmoid_cross_entropy_with_logits(logits, self.targets_y))</span><br><span class="line"></span><br><span class="line">        <span class="comment"># 优化</span></span><br><span class="line">        self.lr = tf.Variable(<span class="number">0.0</span>, trainable=<span class="literal">False</span>)</span><br><span class="line">        trainable_vars = tf.trainable_variables()</span><br><span class="line">        <span class="comment"># 使用梯度截断来避免梯度消失和梯度爆炸</span></span><br><span class="line">        grads, _ = tf.clip_by_global_norm(</span><br><span class="line">            tf.gradients(self.loss, trainable_vars), FLAGS.max_gradient_norm)</span><br><span class="line">        optimizer = tf.train.AdamOptimizer(self.lr)</span><br><span class="line">        self.train_optimizer = optimizer.apply_gradients(</span><br><span class="line">            zip(grads, trainable_vars))</span><br><span class="line"></span><br><span class="line">        <span class="comment"># 下面是用于采样的值</span></span><br><span class="line">        <span class="comment"># (在每个单词后生成情绪)</span></span><br><span class="line"></span><br><span class="line">        <span class="comment"># 取所有输出作为第一个输入序列</span></span><br><span class="line">        <span class="comment"># (由于采样，只需一个输入序列)</span></span><br><span class="line">        sampling_outputs = all_outputs[<span class="number">0</span>]</span><br><span class="line"></span><br><span class="line">        <span class="comment"># Logits</span></span><br><span class="line">        sampling_logits = rnn_softmax(FLAGS, sampling_outputs)</span><br><span class="line">        self.sampling_probabilities = tf.nn.softmax(sampling_logits)</span><br><span class="line"></span><br><span class="line">        <span class="comment"># 保存模型的组件</span></span><br><span class="line">        self.global_step = tf.Variable(<span class="number">0</span>, trainable=<span class="literal">False</span>)</span><br><span class="line">        self.saver = tf.train.Saver(tf.all_variables())</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">step</span><span class="params">(self, sess, batch_X, batch_y=None, dropout=<span class="number">0.0</span>,</span></span></span><br><span class="line"><span class="function"><span class="params">        forward_only=True, sampling=False)</span>:</span></span><br><span class="line"></span><br><span class="line">        input_feed = &#123;self.inputs_X: batch_X,</span><br><span class="line">                      self.targets_y: batch_y,</span><br><span class="line">                      self.dropout: dropout&#125;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">if</span> forward_only:</span><br><span class="line">            <span class="keyword">if</span> <span class="keyword">not</span> sampling:</span><br><span class="line">                output_feed = [self.loss,</span><br><span class="line">                               self.accuracy]</span><br><span class="line">            <span class="keyword">elif</span> sampling:</span><br><span class="line">                input_feed = &#123;self.inputs_X: batch_X,</span><br><span class="line">                              self.dropout: dropout&#125;</span><br><span class="line">                output_feed = [self.sampling_probabilities]</span><br><span class="line">        <span class="keyword">else</span>: <span class="comment"># 训练</span></span><br><span class="line">            output_feed = [self.train_optimizer,</span><br><span class="line">                           self.loss,</span><br><span class="line">                           self.accuracy]</span><br><span class="line"></span><br><span class="line">        outputs = sess.run(output_feed, input_feed)</span><br><span class="line"></span><br><span class="line">        <span class="keyword">if</span> forward_only:</span><br><span class="line">            <span class="keyword">if</span> <span class="keyword">not</span> sampling:</span><br><span class="line">                <span class="keyword">return</span> outputs[<span class="number">0</span>], outputs[<span class="number">1</span>]</span><br><span class="line">            <span class="keyword">elif</span> sampling:</span><br><span class="line">                <span class="keyword">return</span> outputs[<span class="number">0</span>]</span><br><span class="line">        <span class="keyword">else</span>: <span class="comment"># 训练</span></span><br><span class="line">            <span class="keyword">return</span> outputs[<span class="number">0</span>], outputs[<span class="number">1</span>], outputs[<span class="number">2</span>]</span><br></pre></td></tr></table></figure>
+
+<p>上面的代码就是我们的模型代码，它在训练的过程中使用了输入的文本。<strong>注意</strong>：为了清楚起见，我们决定将批量数据的大小保存在我们的输入和目标占位符中，但是我们应该让它们独立于一个特定的批量大小之外。由于这个特定的批量大小依赖于 <code>batch_size</code>，如果我们这么做，那么我们就还得输入一个 <code>initial_state</code>。我们通过嵌入他们来为每个数据序列来输入 token。实践策略表明，我们在输入文本上使用 skip-gram 模型预训练嵌入权重能够取得更好的性能。</p>
+<p>在此模型中，我们再次使用 <code>dynamic_rnn</code>，但是这次我们提供了<code>sequence_length</code> 参数的值，它是一个包含每个序列长度的列表。这样，我们就可以避免在输入序列的最后一个词之后进行的不必要的计算。<strong><code>length</code></strong> 函数就用来获取这个列表的长度，如下所示。当然，我们也可以在外面计算<code>seq_len</code>，再通过占位符进行传递。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">length</span><span class="params">(data)</span>:</span></span><br><span class="line">	relevant = tf.sign(tf.abs(data))</span><br><span class="line">	length = tf.reduce_sum(relevant, reduction_indices=<span class="number">1</span>)</span><br><span class="line">	length = tf.cast(length, tf.int32)</span><br><span class="line">	<span class="keyword">return</span> length</span><br></pre></td></tr></table></figure>
+
+<p>由于我们填充符 token 为 0，因此可以使用每个 token 的 sign 性质来确定它是否是一个填充符 token。如果输入大于 0，则 <code>tf.sign</code> 为 1；如果输入为 0，则为 <code>tf.sign</code> 为 0。这样，我们可以逐步通过列索引来获得 sign 值为正的 token 数量。至此，我们可以将这个长度提供给 <code>dynamic_rnn</code> 了。</p>
+<p><strong>注意</strong>：我们可以很容易地在外部计算 <code>seq_lens</code>，并将其作为占位符进行传参。这样我们就不用依赖于 <code>PAD_ID = 0</code> 这个性质了。</p>
+<p>一旦我们从 RNN 拿到了所有的输出和最终状态，我们就会希望分离对应输出。对于每个输入来说，将具有不同的对应输出，因为每个输入长度不一定不相同。由于我们将 <code>seq_len</code> 传给了 <code>dynamic_rnn</code>，而 <code>state</code> 又是最后一个对应输出，我们可以通过查看 <code>state</code> 来找到对应输出。注意，我们必须取 <code>state[0]</code>，因为返回的 <code>state</code> 是一个张量的元组。</p>
+<p>其他需要注意的事情：我并没有使用 <strong><code>initial_state</code></strong>，而是直接给 <code>dynamic_rnn</code> 设置 <code>dtype</code>。此外，<code>dropout</code> 将根据 <code>forward_only</code> 与否，作为参数传递给 <strong><code>step()</code></strong>。</p>
+<h2 id="推断"><a href="#推断" class="headerlink" title="推断"></a>推断</h2><p>总的来说，除了单个句子的预测外，我还想为具有一堆样本句子整体情绪进行预测。我希望看到的是，每个单词都被 RNN 读取后，将之前的单词分值保存在内存中，从而查看预测分值是怎样变化的。举例如下（值越接近 0 表明越靠近负面情绪）：</p>
+<p><img src="https://picreso.oss-cn-beijing.aliyuncs.com/68747470733a2f2f7468656e657572616c70657273706563746976652e66696c65732e776f726470726573732e636f6d2f323031362f31302f73637265656e2d73686f742d323031362d31302d30352d61742d382d33342d35312d706d2e706e673f773d363230.png" alt=""></p>
+<p><strong>注意</strong>：这是一个非常简单的模型，其数据集非常有限。主要目的只是为了阐明它是如何搭建以及如何运行的。为了获得更好的性能，请尝试使用数据量更大的数据集，并考虑具体的网络架构，比如 Attention 模型、Concept-Aware 词嵌入以及隐喻（symbolization to name）等等。</p>
+<h2 id="损失屏蔽（这里不需要）"><a href="#损失屏蔽（这里不需要）" class="headerlink" title="损失屏蔽（这里不需要）"></a>损失屏蔽（这里不需要）</h2><p>最后，我们来计算 cost。你可能会注意到我们没有做任何损失屏蔽（loss masking）处理，因为我们分离了对应输出，仅用于计算损失函数。然而，对于其他诸如机器翻译的任务来说，我们的输出很有可能还来自填充符 token。我们不想考虑这些输出，因为传递了 <code>seq_lens</code> 参数的 <code>dynamic_rnn</code> 将返回 0。下面这个例子比较简单，只用来说明这个实现大概是怎么回事；我们这里再一次使用了填充符 token 为 0 的性质：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 向量化 logits 和目标</span></span><br><span class="line">targets = tf.reshape(targets, [<span class="number">-1</span>]) <span class="comment"># 将张量 targets 转为向量</span></span><br><span class="line">losses = tf.nn.sparse_softmax_cross_entropy_with_logits(logits, targets)</span><br><span class="line">mask = tf.sign.(tf.to_float(targets)) <span class="comment"># targets 为 0 则输出为 0, target &lt; 0 则输出为 -1, 否则 为 1</span></span><br><span class="line">masked_losses = mask*losses <span class="comment"># 填充符所在位置的贡献为 0</span></span><br></pre></td></tr></table></figure>
+
+<p>首先我们要将 logits 和 targets 向量化。为了使 logits 向量化，一个比较好的办法是将 <code>dynamic_rnn</code> 的输出向量化为 <code>[-1，num_hidden_units]</code> 的形状，然后乘以 softmax 权重 <code>[num_hidden_units，num_classes]</code>。通过损失屏蔽操作，就可以消除填充符所在位置贡献的损失。</p>
+<h2 id="张量形状变化的参考"><a href="#张量形状变化的参考" class="headerlink" title="张量形状变化的参考"></a>张量形状变化的参考</h2><p>原始未处理过的文本 <code>X</code> 形状为 <code>[N,]</code> 而 <code>y</code> 的形状为 <code>[N, C]</code>，其中 <code>C</code> 是输出类别的数量（这些是手动完成的，但我们需要使用独热编码来处理多类情况）。</p>
+<p>然后 <code>X</code> 被转化为 token 并进行填充，变成了 <code>[N, ]</code>。我们还需要传递形状为 <code>[N,]</code> 的 <code>seq_len</code> 参数，包含每个句子的长度。</p>
+<p>现在 <code>X</code>、<code>seq_len</code> 和 <code>y</code> 通过这个模型首先嵌入为 <code>[NXD]</code>，其中 D 是嵌入维度。<code>X</code> 便从 <code>[N, ]</code> 转换为了 <code>[N, , D]</code>。回想一下，X 在这里有一个中间表示，它被独热编码为了 <code>[N, , ]</code>。但我们并不需要这么做，因为我们只需要使用对应词的索引，然后从词嵌入权重中取值就可以了。</p>
+<p>我们需要将这个嵌入后的 <code>X</code> 传递给 <code>dynamic_rnn</code> 并返回 <code>all_outputs</code> （<code>[N, , D]</code>）以及 <code>state</code>（<code>[1, N, D]</code>）。由于我们输入了 <code>seq_lens</code>，对于我们而言它就是最后一个对应的状态。从维度的角度来说，你可以看到， <code>all_outputs</code> 就是来自 RNN 的对于每个句子中的每个词的全部输出结果。然而，<code>state</code> 仅仅只是每个句子的最后一个对应输出。</p>
+<p>现在我们要输入 softmax 权重，但在此之前，我们需要通过取第一个索引（<code>state[0]</code>）来把状态从 <code>[1,N,D]</code> 转换为<code>[N,D]</code>。如此便可以通过与 softmax 权重 <code>[D,C]</code> 的点积，来得到形状为 <code>[N,C]</code> 的输出。其中，我们做指数级 softmax 运算，然后进行正则化，最终结合形状为 <code>[N,C]</code> 的 <code>target_y</code> 来计算损失函数。</p>
+<p><strong>注意</strong>：如果你使用了基本的 RNN 或者 GRU，从 <code>dynamic_rnn</code> 返回的 <code>all_outputs</code> 和 <code>state</code> 的形状是一样的。但是如果使用 LSTM 的话，<code>all_outputs</code> 的形状就是 <code>[N, , D]</code> 而 <code>state</code> 的形状为 <code>[1, 2, N, D]</code>。</p>
+
+    </div>
+
+    
+        <hr class="fhr">
+        <div id="vcomments"></div>
+    
+</div>
+    <div class="footer" id="footer">
+    <p><h4>Copyright © 2020 | Author: LiuXunzhuo | <a href="https://github.com/Xunzhuo/hexo-theme-coder" target="_blank" rel="noopener">Theme: Hexo-Coder</a></h4>
+        <label class="el-switch el-switch-blue el-switch-sm" style="vertical-align: sub;">
+            <input type="checkbox" name="switch" id="update_style">
+            <span class="el-switch-style"></span>
+        </label>
+<!--         <script type="text/javascript">
+        var cnzz_protocol = (("https:" == document.location.protocol) ? "https://" : "http://");
+        document.write(unescape("%3Cspan id='cnzz_stat_icon_1278548644'%3E%3C/span%3E%3Cscript src='" + cnzz_protocol + "v1.cnzz.com/stat.php%3Fid%3D1278548644%26show%3Dpic1' type='text/javascript'%3E%3C/script%3E"));
+        </script> -->
+    </p>
+</div>
+<input type="hidden" id="web_style" value="black">
+<input type="hidden" id="valine_appid" value="NOsswOncKgc8HOxqo9oxIWlX-gzGzoHsz">
+<input type="hidden" id="valine_appKey" value="z1FihjWEbS8uIfUQdmCtK7zz">
+
+<script src="/libs/jquery.min.js"></script>
+
+
+<script src="/libs/highlight/highlight.pack.js"></script>
+
+<script src='//cdn.jsdelivr.net/npm/valine@1.3.10/dist/Valine.min.js'></script>
+
+<script src="/js/js.js"></script>
+
+<style type="text/css">
+.v * {
+    color: #698fca;
+}
+
+.v .vlist .vcard .vhead .vsys {
+    color: #3a3e4a;
+}
+
+.v .vlist .vcard .vh .vmeta .vat {
+    color: #638fd5;
+}
+
+.v .vlist .vcard .vhead .vnick {
+    color: #6ba1ff;
+}
+
+.v a {
+    color: #8696b1;
+}
+
+.v .vlist .vcard .vhead .vnick:hover {
+    color: #669bfc;
+}
+</style>
+
+</body>
+
+</html>

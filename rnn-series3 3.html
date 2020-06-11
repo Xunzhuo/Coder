@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="renderer" content="webkit">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <meta name="google-site-verification" content="TZE0rZyIqLl10trYu3BWBWa1Vmz6HFwhb2OcNEK4u-s" />
+     <link rel="shortcut icon" href= /img/favicon.ico >
+    <title>
+        刘训灼的子站🏠
+    </title>
+    
+<link rel="stylesheet" href="/libs/highlight/styles/monokai-sublime.css">
+
+    
+<link rel="stylesheet" href="/libs/font-awesome/css/font-awesome.min.css">
+
+    
+<link rel="stylesheet" href="/css/style.css">
+
+<meta name="generator" content="Hexo 4.2.1"></head>
+<body id="bodyx">
+    <div class="hd posts">
+    <a href="/index.html"><i class="fa fa-home
+ replay-btn" aria-hidden="true"></i></a>
+    <div class="post-title">
+        <p>
+            RNN成长记(三)：Encoder-Decoder🔥
+        </p>
+        <hr>
+    </div>
+    <div class="post-content">
+        <p>在本文中，我将介绍基本的编码器（encoder）和解码器（decoder），用于处理诸如机器翻译之类的 seq2seq 任务。我们不会在这篇文章中介绍注意力机制，而在下一篇文章中去实现它。</p>
+<p>如下图所示，我们将输入序列输入给编码器，然后将生成一个最终的隐藏状态，并将其输入到解码器中。即编码器的最后一个隐藏状态就是解码器的新初始状态。我们将使用 softmax 来处理解码器输出，并将其与目标进行比较，从而计算我们的损失函数。这里的主要区别在于，我没有向编码器的输入添加 EOS（译注：句子结束符，end-of-sentence）token，同时我也没有让编码器对句子进行反向读取。</p>
+<p><img src="https://picreso.oss-cn-beijing.aliyuncs.com/68747470733a2f2f7468656e657572616c70657273706563746976652e66696c65732e776f726470726573732e636f6d2f323031362f31312f73637265656e2d73686f742d323031362d31312d31392d61742d342d34382d30332d706d2e706e673f773d363230.png" alt="Screen Shot 2016-11-19 at 4.48.03 PM.png"></p>
+<h2 id="数据"><a href="#数据" class="headerlink" title="数据"></a>数据</h2><p>我想创建一个非常小的数据集来使用（20 个英语和西班牙语的句子）。本教程的重点是了解如何构建一个编码解码器系统，而不是去关注这个系统对诸如机器翻译和其他 seq2seq 处理等任务的处理。所以我自己写了几个句子，然后把它们翻译成西班牙语。这就是我们的数据集。</p>
+<p>首先，我们将这些句子分隔为 token，然后将这些 token 转换为 token ID。在这个过程中，我们收集一个词汇字典和一个反向词汇字典，以便在 token 和 token ID 之间来回转换。对于我们的目标语言（西班牙语）来说，我们将添加一个额外的 EOS token。然后，我们会将源 token 和目标 token 都填充到（对应数据集中最长句子的）最大长度。这是我们模型的输入数据。对于编码器而言，我们将填充后的源内容直接进行输入，而对于目标内容做进一步处理，以获得我们的解码器输入和输出。</p>
+<p>最后，输入结果是这个样子的：</p>
+<p><img src="https://picreso.oss-cn-beijing.aliyuncs.com/68747470733a2f2f7468656e657572616c70657273706563746976652e66696c65732e776f726470726573732e636f6d2f323031362f31312f73637265656e2d73686f742d323031362d31312d31392d61742d342d32302d35342d706d2e706e673f773d363230.png" alt="Screen Shot 2016-11-19 at 4.20.54 PM.png"></p>
+<p>这只是某个批次中的一个样本。其中 0 是填充的值，1 是 GO token，2 则是 EOS token。下图是数据变换更一般的表示形式。请无视目标权重，我们不会在实现中使用它们。</p>
+<p><img src="https://picreso.oss-cn-beijing.aliyuncs.com/68747470733a2f2f7468656e657572616c70657273706563746976652e66696c65732e776f726470726573732e636f6d2f323031362f31302f73637265656e2d73686f742d323031362d31312d31362d61742d352d30392d31302d706d2e706e673f773d363230.png" alt="screen-shot-2016-11-16-at-5-09-10-pm"></p>
+<h2 id="编码器"><a href="#编码器" class="headerlink" title="编码器"></a>编码器</h2><p>编码器只接受编码器的输入，而我们唯一关心的是最终的隐藏状态。这个隐藏的状态包含了所有输入的信息。我们不会像原始论文所建议的那样反转编码器的输入，因为我们使用的是 <code>dynamic_rnn</code> 的 <code>seq_len</code>。它会基于 <code>seq_len</code> 自动返回最后一个对应的隐藏状态。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">with</span> tf.variable_scope(<span class="string">'encoder'</span>) <span class="keyword">as</span> scope:</span><br><span class="line"></span><br><span class="line">    <span class="comment"># RNN 编码器单元</span></span><br><span class="line">    self.encoder_stacked_cell = rnn_cell(FLAGS, self.dropout,</span><br><span class="line">        scope=scope)</span><br><span class="line"></span><br><span class="line">    <span class="comment"># 嵌入 RNN 编码器输入</span></span><br><span class="line">    W_input = tf.get_variable(<span class="string">"W_input"</span>,</span><br><span class="line">        [FLAGS.en_vocab_size, FLAGS.num_hidden_units])</span><br><span class="line">    self.embedded_encoder_inputs = rnn_inputs(FLAGS,</span><br><span class="line">        self.encoder_inputs, FLAGS.en_vocab_size, scope=scope)</span><br><span class="line">    <span class="comment">#initial_state = encoder_stacked_cell.zero_state(FLAGS.batch_size, tf.float32)</span></span><br><span class="line"></span><br><span class="line">    <span class="comment"># RNN 编码器的输出</span></span><br><span class="line">    self.all_encoder_outputs, self.encoder_state = tf.nn.dynamic_rnn(</span><br><span class="line">        cell=self.encoder_stacked_cell,</span><br><span class="line">        inputs=self.embedded_encoder_inputs,</span><br><span class="line">        sequence_length=self.en_seq_lens, time_major=<span class="literal">False</span>,</span><br><span class="line">        dtype=tf.float32)</span><br></pre></td></tr></table></figure>
+
+<p>我们将使用这个最终的隐藏状态作为解码器的新初始状态。</p>
+<h2 id="解码器"><a href="#解码器" class="headerlink" title="解码器"></a>解码器</h2><p>这个简单的解码器将编码器的最终的隐藏状态作为自己的初始状态。我们还将接入解码器的输入，并使用 RNN 解码器来处理它们。输出的结果将通过 softmax 进行归一化处理，然后与目标进行比较。注意，解码器输入从一个 GO token 开始，从而用来预测第一个目标 token。解码器输入的最后一个对应的 token 则是用来预测 EOS 目标 token 的。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">with</span> tf.variable_scope(<span class="string">'decoder'</span>) <span class="keyword">as</span> scope:</span><br><span class="line"></span><br><span class="line">    <span class="comment"># 初始状态是编码器的最后一个对应状态</span></span><br><span class="line">    self.decoder_initial_state = self.encoder_state</span><br><span class="line"></span><br><span class="line">    <span class="comment"># RNN 解码器单元</span></span><br><span class="line">    self.decoder_stacked_cell = rnn_cell(FLAGS, self.dropout,</span><br><span class="line">        scope=scope)</span><br><span class="line"></span><br><span class="line">    <span class="comment"># 嵌入 RNN 解码器输入</span></span><br><span class="line">    W_input = tf.get_variable(<span class="string">"W_input"</span>,</span><br><span class="line">        [FLAGS.sp_vocab_size, FLAGS.num_hidden_units])</span><br><span class="line">    self.embedded_decoder_inputs = rnn_inputs(FLAGS, self.decoder_inputs,</span><br><span class="line">        FLAGS.sp_vocab_size, scope=scope)</span><br><span class="line"></span><br><span class="line">    <span class="comment"># RNN 解码器的输出</span></span><br><span class="line">    self.all_decoder_outputs, self.decoder_state = tf.nn.dynamic_rnn(</span><br><span class="line">        cell=self.decoder_stacked_cell,</span><br><span class="line">        inputs=self.embedded_decoder_inputs,</span><br><span class="line">        sequence_length=self.sp_seq_lens, time_major=<span class="literal">False</span>,</span><br><span class="line">        initial_state=self.decoder_initial_state)</span><br></pre></td></tr></table></figure>
+
+<p>那填充值会发生什么呢？它们也会预测一些输出目标，而我们并不关心这些内容，但如果我们把它们考虑进去，它们仍然会影响我们的损失函数。接下来我们将屏蔽掉这些损失以消除对目标结果的影响。</p>
+<h2 id="损失屏蔽"><a href="#损失屏蔽" class="headerlink" title="损失屏蔽"></a>损失屏蔽</h2><p>我们会检查目标，并将目标中被填充的部分屏蔽为 0。因此，当我们获得最后一个有关的解码器 token 时，目标就会是表示 EOS 的 token ID。而对于下一个解码器的输入而言，目标就会是 PAD ID，这也就是屏蔽开始的地方。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># Logit</span></span><br><span class="line">self.decoder_outputs_flat = tf.reshape(self.all_decoder_outputs,</span><br><span class="line">    [<span class="number">-1</span>, FLAGS.num_hidden_units])</span><br><span class="line">self.logits_flat = rnn_softmax(FLAGS, self.decoder_outputs_flat,</span><br><span class="line">    scope=scope)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 损失屏蔽</span></span><br><span class="line">targets_flat = tf.reshape(self.targets, [<span class="number">-1</span>])</span><br><span class="line">losses_flat = tf.nn.sparse_softmax_cross_entropy_with_logits(</span><br><span class="line">    self.logits_flat, targets_flat)</span><br><span class="line">mask = tf.sign(tf.to_float(targets_flat))</span><br><span class="line">masked_losses = mask * losses_flat</span><br><span class="line">masked_losses = tf.reshape(masked_losses,  tf.shape(self.targets))</span><br><span class="line">self.loss = tf.reduce_mean(</span><br><span class="line">    tf.reduce_sum(masked_losses, reduction_indices=<span class="number">1</span>))</span><br></pre></td></tr></table></figure>
+
+<p>注意到可以使用 PAD ID 为 0 这个事实作为屏蔽手段，我们便只需计算（一个批次中样本的）每一行损失之和即可，然后取所有样本损失的平均值，从而得到一个批次的损失。这时，我们就可以通过最小化这个损失函数来进行训练了。</p>
+<p>以下是训练结果：</p>
+<p><img src="https://picreso.oss-cn-beijing.aliyuncs.com/68747470733a2f2f7468656e657572616c70657273706563746976652e66696c65732e776f726470726573732e636f6d2f323031362f31312f73637265656e2d73686f742d323031362d31312d31392d61742d342d35362d31382d706d2e706e673f773d363230.png" alt="Screen Shot 2016-11-19 at 4.56.18 PM.png"></p>
+<p>我们不会在这里做任何的模型推断，但是你可以在接下来的关于注意力机制的文章中看到。如果你真的想在这里实现模型推断，使用相同的模型就可以了，但你还得将预测目标的结果作为输入接入下一个 RNN 解码器单元。同时你还要将相同的权重集嵌入解码器中，并将其作为 RNN 的另一个输入。这意味着对于初始的 GO token 而言，你得嵌入一些伪造的 token 进行输入。</p>
+<h2 id="结论"><a href="#结论" class="headerlink" title="结论"></a>结论</h2><p>这个编码解码器模型非常简单，但是在理解 seq2seq 实现之前，它是一个必要的基础。在下一篇 RNN 教程中，我们将涵盖 Attention 模型及其在编码解码器模型结构上的优势。</p>
+
+    </div>
+
+    
+        <hr class="fhr">
+        <div id="vcomments"></div>
+    
+</div>
+    <div class="footer" id="footer">
+    <p><h4>Copyright © 2020 | Author: LiuXunzhuo | <a href="https://github.com/Xunzhuo/hexo-theme-coder" target="_blank" rel="noopener">Theme: Hexo-Coder</a></h4>
+        <label class="el-switch el-switch-blue el-switch-sm" style="vertical-align: sub;">
+            <input type="checkbox" name="switch" id="update_style">
+            <span class="el-switch-style"></span>
+        </label>
+<!--         <script type="text/javascript">
+        var cnzz_protocol = (("https:" == document.location.protocol) ? "https://" : "http://");
+        document.write(unescape("%3Cspan id='cnzz_stat_icon_1278548644'%3E%3C/span%3E%3Cscript src='" + cnzz_protocol + "v1.cnzz.com/stat.php%3Fid%3D1278548644%26show%3Dpic1' type='text/javascript'%3E%3C/script%3E"));
+        </script> -->
+    </p>
+</div>
+<input type="hidden" id="web_style" value="black">
+<input type="hidden" id="valine_appid" value="NOsswOncKgc8HOxqo9oxIWlX-gzGzoHsz">
+<input type="hidden" id="valine_appKey" value="z1FihjWEbS8uIfUQdmCtK7zz">
+
+<script src="/libs/jquery.min.js"></script>
+
+
+<script src="/libs/highlight/highlight.pack.js"></script>
+
+<script src='//cdn.jsdelivr.net/npm/valine@1.3.10/dist/Valine.min.js'></script>
+
+<script src="/js/js.js"></script>
+
+<style type="text/css">
+.v * {
+    color: #698fca;
+}
+
+.v .vlist .vcard .vhead .vsys {
+    color: #3a3e4a;
+}
+
+.v .vlist .vcard .vh .vmeta .vat {
+    color: #638fd5;
+}
+
+.v .vlist .vcard .vhead .vnick {
+    color: #6ba1ff;
+}
+
+.v a {
+    color: #8696b1;
+}
+
+.v .vlist .vcard .vhead .vnick:hover {
+    color: #669bfc;
+}
+</style>
+
+</body>
+
+</html>
