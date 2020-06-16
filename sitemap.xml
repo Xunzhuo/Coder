@@ -2,9 +2,16 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>https://www.liuxunzhuo.top/about/index.html</loc>
+    
+    <lastmod>2020-06-16T13:41:03.079Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>https://www.liuxunzhuo.top/hello-world.html</loc>
     
-    <lastmod>2020-05-26T04:12:29.413Z</lastmod>
+    <lastmod>2020-06-16T13:40:29.819Z</lastmod>
     
   </url>
   
@@ -82,13 +89,6 @@
     <loc>https://www.liuxunzhuo.top/tensor-stock.html</loc>
     
     <lastmod>2020-05-25T09:56:56.806Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://www.liuxunzhuo.top/about/index.html</loc>
-    
-    <lastmod>2020-05-25T09:53:45.224Z</lastmod>
     
   </url>
   
