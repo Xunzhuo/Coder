@@ -1,22 +1,11 @@
 body {
-  background-color: #000;
-  background-image: url("http://picreso.oss-cn-beijing.aliyuncs.com/black.jpg");
+  background-color: #363636;
   color: #d2d2d2;
   font-weight: 400;
   font-size: 14px;
   font-family: "Menlo", "Meslo LG", monospace;
   line-height: 1.725;
   text-rendering: geometricPrecision;
-}
-canvas {
-  position: fixed;
-  right: 0px;
-  bottom: 0px;
-  min-width: 100%;
-  min-height: 100%;
-  height: auto;
-  width: auto;
-  z-index: -1;
 }
 a {
   color: #d2d2d2;
@@ -39,7 +28,7 @@ a:hover {
   width: 100%;
 }
 .hd {
-  width: 650px;
+  width: 60%;
   height: 100%;
   margin: auto;
 }
@@ -47,11 +36,12 @@ a:hover {
   text-align: center;
 }
 .titlex {
-  font-size: 20px;
+  font-size: 30px;
   font-weight: bold;
   margin-top: 30px;
 }
 .list {
+  font-size: 15px;
   padding-left: 25px;
   padding-right: 25px;
   height: 30px;
@@ -64,11 +54,12 @@ a:hover {
   float: right;
 }
 .logopng {
-  width: 200px;
+  width: 250px;
 }
 .breadcrumb {
   padding: 8px 15px;
   list-style: none;
+  font-size: 150%;
   background-color: initial;
   border-radius: 0px;
   text-align: center;
@@ -78,8 +69,8 @@ a:hover {
 }
 .logot {
   font-weight: bold;
-  font-size: 24px;
-  margin-top: -10px;
+  font-size: 500%;
+  margin-top: 10px;
   margin-bottom: -20px;
 }
 .logot .logo_1 {
@@ -93,6 +84,7 @@ a:hover {
 }
 .words {
   padding-top: 16px;
+  font-size: 200%;
 }
 .navd {
   padding-top: 14px;
@@ -118,23 +110,28 @@ hr {
   border-radius: 100%;
   position: absolute;
 }
-.posts .post-title {
+.hd.posts {
+  width: 40%;
+  height: 100%;
+  margin: auto;
+}
+.post-title {
   text-align: center;
   font-size: 24px;
   line-height: 40px;
   margin-bottom: 10px;
 }
-.posts .post-content a {
+.post-content a {
   color: #699be9;
 }
-.posts .fhr {
+.fhr {
   margin-top: 20px;
 }
-.posts .highlight .gutter .hljs {
+.highlight .gutter .hljs {
   border-top-left-radius: 5px;
   border-bottom-left-radius: 5px;
 }
-.posts .highlight .code .hljs {
+.highlight .code .hljs {
   border-top-right-radius: 5px;
   border-bottom-right-radius: 5px;
 }
@@ -901,7 +898,6 @@ hr {
 }
 .bg_while {
   background-color: #fff;
-  background-image: url("http://picreso.oss-cn-beijing.aliyuncs.com/white.jpg");
   color: #696969;
 }
 .el-radio,
