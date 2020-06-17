@@ -28,7 +28,7 @@ a:hover {
   width: 100%;
 }
 .hd {
-  width: 60%;
+  width: 50%;
   height: 100%;
   margin: auto;
 }
@@ -111,8 +111,8 @@ hr {
   border-radius: 100%;
   position: absolute;
 }
-.hd.posts {
-  width: 40%;
+.post-content {
+  width: 80%;
   height: 100%;
   margin: auto;
 }
