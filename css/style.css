@@ -41,7 +41,8 @@ a:hover {
   margin-top: 30px;
 }
 .list {
-  font-size: 15px;
+  font-size: 16px;
+  font-style: italic;
   padding-left: 25px;
   padding-right: 25px;
   height: 30px;
@@ -59,7 +60,7 @@ a:hover {
 .breadcrumb {
   padding: 8px 15px;
   list-style: none;
-  font-size: 150%;
+  font-size: 25px;
   background-color: initial;
   border-radius: 0px;
   text-align: center;
@@ -69,7 +70,7 @@ a:hover {
 }
 .logot {
   font-weight: bold;
-  font-size: 500%;
+  font-size: 80px;
   margin-top: 10px;
   margin-bottom: -20px;
 }
@@ -84,7 +85,7 @@ a:hover {
 }
 .words {
   padding-top: 16px;
-  font-size: 200%;
+  font-size: 30px;
 }
 .navd {
   padding-top: 14px;
