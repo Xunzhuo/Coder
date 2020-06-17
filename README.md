@@ -21,7 +21,6 @@
 + 博客的极简也是很多人追求的，所以我前前后后用大概一个月课余时间开发了这个主题。
 
 > 演示地址 : [点这里](https://www.liuxunzhuo.top)
-> 文档 : [点这里](https://liuxunzhuo.tech/courses/coder)
 
 # Introduction🎙️
 
@@ -128,5 +127,5 @@ valine:
 
 如果你对这个项目感兴趣也可以一起合作🤝
 
-## 如果喜欢请送上一个star✨哦～如果你对我的研究感兴趣期待你的follow👬～🌈
+## 如果喜欢请送上一个star✨～如果你对我的研究感兴趣期待你的follow👬～🌈
 
