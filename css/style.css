@@ -55,12 +55,12 @@ a:hover {
   float: right;
 }
 .logopng {
-  width: 250px;
+  width: 200px;
 }
 .breadcrumb {
   padding: 8px 15px;
   list-style: none;
-  font-size: 25px;
+  font-size: 20px;
   background-color: initial;
   border-radius: 0px;
   text-align: center;
@@ -70,7 +70,7 @@ a:hover {
 }
 .logot {
   font-weight: bold;
-  font-size: 80px;
+  font-size: 50px;
   margin-top: 10px;
   margin-bottom: -20px;
 }
@@ -85,7 +85,7 @@ a:hover {
 }
 .words {
   padding-top: 16px;
-  font-size: 30px;
+  font-size: 25px;
 }
 .navd {
   padding-top: 14px;
