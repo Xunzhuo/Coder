@@ -18,7 +18,7 @@
 
 + 自己从大一就在用Hexo写博客，对Hexo很喜欢，一直想着自己写一个主题
 + 自己主要方向是NLP、深度学习，Web开发一直都是自学，能力有限，不能太复杂
-+ 博客的极简也是很多人追求的，所以我前前后后用大概一个月课余时间开发了这个主题。
++ 不复杂不代表不好，博客的极简也是很多人追求的，所以我开发了这个主题，前前后后1个月
 
 > 演示地址 : [点这里](https://www.liuxunzhuo.top)
 
@@ -73,10 +73,10 @@
 ### 1. 进入 /Hexo目录/themes：
 
 ``` shell
-git clone git@github.com:Xunzhuo/hexo-theme-coder.git coder
+git clone url coder
 ```
 
-### 2. 修改Hexo目录下的_config.yml 的 theme 为 coder
+### 2. 修改Hexo目录下的**_config.yml** 的 **theme** 为 **coder**
 
 ### 3. 修改配置
 
@@ -123,9 +123,9 @@ valine:
 
 # Coder后期计划
 
-闲暇时可能会不断扩展这个主题的功能，让Coder更实用，更加定制化～
+闲暇时可能会不断扩展这个主题的功能，让Coder更实用～
 
 如果你对这个项目感兴趣也可以一起合作🤝
 
-## 如果喜欢请送上一个star✨～如果你对我的研究感兴趣期待你的follow👬～🌈
+## 如果喜欢请送上一个star✨哦～如果你对我的研究感兴趣期待你的follow👬～🌈
 

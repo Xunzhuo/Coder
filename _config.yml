@@ -1,5 +1,5 @@
 # 网站标题
-logo_title: Hexo-Coder
+logo_title: 进击の算法
 # 初始化风格 black/light
 style: black
 
@@ -23,7 +23,7 @@ menu:
   Github🐒: https://github.com/xunzhuo
 
 # 做了域名限制，请改成自己的 KEY
-# 若关闭valine 设置enable为false
+# 若关闭valine 设置enable为false∂
 valine:
   enable: true
   appId: NOsswOncKgc8HOxqo9oxIWlX-gzGzoHsz
