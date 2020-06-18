@@ -60,7 +60,7 @@ a:hover {
 .breadcrumb {
   padding: 8px 15px;
   list-style: none;
-  font-size: 15px;
+  font-size: 100%;
   font-weight: bold;
   background-color: initial;
   border-radius: 0px;
