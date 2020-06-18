@@ -1,16 +1,16 @@
 # 网站标题
-logo_title: 进击の算法
+logo_title: Title_Name
 # 初始化风格 black/light
 style: black
 
 # 首页URL
-link: https://www.liuxunzhuo.top
+link: Your_URL
 
 #标语:
-words: AI 🤖️ Code 🧑‍💻 Life 🌈
+words: Your Words
 
 # 你的昵称
-author: LiuXunzhuo
+author: Your Name
 # 中心图标选择男女或者自定义
 gender: /img/male.png #/img/female.png
 
