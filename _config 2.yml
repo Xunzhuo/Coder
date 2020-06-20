@@ -1,0 +1,34 @@
+# 网站标题
+logo_title: 进击の算法
+# 初始化风格 black/light
+style: light
+
+# 首页URL
+link: https://www.liuxunzhuo.top
+
+#标语:
+words: AI 🤖️ Code 🧑‍💻 Life 🌈
+
+# 你的昵称
+author: LiuXunzhuo
+# 中心图标选择男女或者自定义
+gender: /img/male.png #/img/female.png
+
+favicon: /img/favicon.ico
+
+# 菜单栏配置
+menu:
+  关于我👀: /about
+  访问主站🎉: https://liuxunzhuo.tech
+  GitHub🐒: https://github.com/xunzhuo
+
+# 做了域名限制，请改成自己的 KEY
+# 若关闭valine 设置enable为false∂
+valine:
+  enable: true
+  appId: NOsswOncKgc8HOxqo9oxIWlX-gzGzoHsz
+  appKey: z1FihjWEbS8uIfUQdmCtK7zz
+
+
+highlight:
+  enable: true
