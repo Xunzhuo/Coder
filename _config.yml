@@ -1,29 +1,48 @@
-# 网站标题
-logo_title: Title_Name
-# 初始化风格 black/light
-style: black
+# 当前版本 | Theme Version
+Hexo: "1.2"
 
-# 首页URL
+# 网站标题 | Title
+logo_title: Title_Name
+
+# 初始化风格 | Default Style "black/light"
+style: black
+#style: light
+
+# 首页URL | Your URL
 link: Your_URL
 
-#标语:
+#标语 | Your Slogan
 words: Your Words
 
-# 你的昵称
+# 你的昵称 | Your Name
 author: Your Name
-# 中心图标选择男女或者自定义
+
+# 中心图标选择男女或者自定义 | Gender
 gender: /img/male.png #/img/female.png
 
+# 站点小图标地址 | Small Icon of Your Site
 favicon: /img/favicon.ico
 
-# 菜单栏配置
+# 菜单栏配置 | Nav Bar Settings
 menu:
   关于我👀: /about
   访问主站🎉: https://liuxunzhuo.tech
   Github🐒: https://github.com/xunzhuo
 
-# 做了域名限制，请改成自己的 KEY
-# 若关闭valine 设置enable为false∂
+# 站内关键词搜索 | Local Search
+## 请需先安装对应插件 | You need to insatall the following plugin
+## https://github.com/PaicHyperionDev/hexo-generator-search
+## $ npm install hexo-generator-search --save
+#search:
+ # enable: true
+ # path: search.xml
+ # ield: post
+ # content: true
+ # onload: true
+
+# 评论系统 | Comments
+## 做了域名限制，请改成自己的 KEY
+## 若关闭valine 设置enable为false∂
 valine:
   enable: true
   appId: NOsswOncKgc8HOxqo9oxIWlX-gzGzoHsz
