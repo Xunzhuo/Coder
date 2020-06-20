@@ -1,7 +1,7 @@
 body {
   background-color: #363636;
   color: #d2d2d2;
-  font-weight: 400;
+  font-weight: 4000;
   font-size: 14px;
   font-family: "Menlo", "Meslo LG", monospace;
   line-height: 1.725;
@@ -13,7 +13,6 @@ a {
 }
 a:focus,
 a:hover {
-  color: Chocolate;
   text-decoration: underline;
 }
 .footer {
@@ -28,7 +27,7 @@ a:hover {
   width: 100%;
 }
 .hd {
-  width: 50%;
+  width: 55%;
   height: 100%;
   margin: auto;
 }
@@ -41,8 +40,7 @@ a:hover {
   margin-top: 30px;
 }
 .list {
-  font-size: 16px;
-  font-style: italic;
+  font-size: 17px;
   padding-left: 25px;
   padding-right: 25px;
   height: 30px;
@@ -60,14 +58,12 @@ a:hover {
 .breadcrumb {
   padding: 8px 15px;
   list-style: none;
-  font-size: 100%;
-  font-weight: bold;
   background-color: initial;
   border-radius: 0px;
   text-align: center;
 }
 .jing {
-  color: Chocolate;
+  color: #1e90ff;
 }
 .logot {
   font-weight: bold;
@@ -1223,12 +1219,17 @@ label.el-checkbox {
   border-radius: 4px;
 }
 .breadcrumb>li {
+  font-size: 100%;
   display: inline-block;
+}
+.breadcrumb a {
+  font-weight: bold;
+  font-size: 16px;
 }
 .breadcrumb>li+li:before {
   padding: 0 5px;
   color: #ccc;
-  content: "&\00a0";
+  content: "|";
 }
 .breadcrumb>.active {
   color: #777;
