@@ -38,14 +38,10 @@ menu:
   GitHub🐒: https://github.com/xunzhuo
 
 # 站内关键词搜索 | Local Search
-## 请需先安装对应插件 | You need to insatall the following plugin
-## https://github.com/PaicHyperionDev/hexo-generator-search
-## $ npm install hexo-generator-search --save
-#search:
- # enable: true
- # path: search.xml
- # ield: post
- # content: true
+search:
+ enable: true
+ path: search.xml
+ field: post
  # onload: true
 
 # 评论系统 | Comments

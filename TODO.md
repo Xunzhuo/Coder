@@ -7,7 +7,8 @@ This is a to-do list which specifies the functions that are expected to be imple
 -   [ ] User can delete inappropriate comments
 -   [ ] Tab title change 
 -   [ ] Tags and archives
--   [ ] More languages
+-   [ ] Word count + estimated read time
+-   [ ] Adapt to more languages
 -   [ ] Mobile Responsive
 
 

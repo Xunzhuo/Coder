@@ -1,8 +1,48 @@
+
 <div class="hd">
     <ol class="breadcrumb">
         <% for (name in theme.menu) { %>
             <li><a class="ba" href="<%- url_for(theme.menu[name]) %>"><%= name %></a></li>
         <% } %>
+
+            <%- js('libs/jquery.min.js') %>
+            <%- js('js/search.js') %>
+            <% if (theme.search.enable) { %>
+                <form class="site-search-form">
+                    <input type="text" id="local-search-input" class="st-search-input" />
+                </form>
+                <div id="local-search-result" class="local-search-result-cls"></div>
+            <% } %>
+            <script type="text/javascript" id="local.search.active">
+                var inputArea       = document.querySelector("#local-search-input");
+                var getSearchFile = function(){
+                    var path = "/search.xml";
+                    searchFunc(path, 'local-search-input', 'local-search-result');
+                }
+                inputArea.onfocus = function(){ getSearchFile() }
+
+                var $resetButton = $("#search-form .fa-times");
+                var $resultArea = $("#local-search-result");
+
+                inputArea.oninput = function(){ $resetButton.show(); }
+                resetSearch = function(){
+                    $resultArea.html("");
+                    document.querySelector("#search-form").reset();
+                    $resetButton.hide();
+                    $(".no-result").hide();
+                }
+                inputArea.onkeydown = function(){ if(event.keyCode == 13) return false }
+                //No search result
+                $resultArea.bind("DOMNodeRemoved DOMNodeInserted", function(e) {
+                    if (!$(e.target).text()) {
+                        $(".no-result").show(200);
+                    } else {
+                        $(".no-result").hide();
+                    }
+                })
+            </script>
+
     </ol>
+
     <hr class="breadcrumbhr">
 </div>
