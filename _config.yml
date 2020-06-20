@@ -1,16 +1,16 @@
 # 网站标题
-logo_title: Title_Name
+logo_title: 进击の算法
 # 初始化风格 black/light
-style: black
+style: light
 
 # 首页URL
-link: Your_URL
+link: https://www.liuxunzhuo.top
 
 #标语:
-words: Your Words
+words: AI 🤖️ Code 🧑‍💻 Life 🌈
 
 # 你的昵称
-author: Your Name
+author: LiuXunzhuo
 # 中心图标选择男女或者自定义
 gender: /img/male.png #/img/female.png
 
@@ -20,7 +20,7 @@ favicon: /img/favicon.ico
 menu:
   关于我👀: /about
   访问主站🎉: https://liuxunzhuo.tech
-  Github🐒: https://github.com/xunzhuo
+  GitHub🐒: https://github.com/xunzhuo
 
 # 做了域名限制，请改成自己的 KEY
 # 若关闭valine 设置enable为false∂
