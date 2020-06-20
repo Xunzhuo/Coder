@@ -32,51 +32,24 @@
 
 当你厌倦了花哨之后，我相信很多人想让博客变得简约，Coder就是为你们而设计❤️
 
-接下来我来展示各个`效果图`，因为 **Coder 1.1** 发布了，以下展示效果为**Coder 1.0**的效果，具体效果请参见[这里](https://www.liuxunzhuo.top)
-
-## Coder 展示👀
-
-### 电脑端💻：
-
-#### 黑色模式
-
-![](https://github.com/xunzhuo/hexo-theme-coder/raw/master/source/doc/gentle.png)
-
-#### 白色模式
-
-![](https://github.com/xunzhuo/hexo-theme-coder/raw/master/source/doc/light.png)
-
-### Lady模式：
-
-#### Dark模式
-
-![](https://github.com/xunzhuo/hexo-theme-coder/raw/master/source/doc/lady1.png)
-
-#### Light模式
-
-![](https://github.com/xunzhuo/hexo-theme-coder/raw/master/source/doc/lady2.png)
-
-### 手机端：
-
-<div align = "center">
-  <span> <img src="https://github.com/xunzhuo/hexo-theme-coder/raw/master/source/doc/phone1.png" width="200" /> <img src="https://github.com/xunzhuo/hexo-theme-coder/raw/master/source/doc/phone2.png" width="200"  /></span>
-</div>
-
+> 因为 **Coder 2.0** 发布了，具体效果请参见[这里](https://www.liuxunzhuo.top)
 
 
 # How To Use❓
 
-
-
 ## Coder使用和配置很简单：
 
-### 1. 进入 /Hexo目录/themes：
+### 1. 下载Coder
+
+#### 方法一：进入 /Hexo目录/themes：
 
 ``` shell
-git clone url coder
+git clone git@github.com:Xunzhuo/hexo-theme-coder.git coder
 ```
 
-### 2. 修改Hexo目录下的**_config.yml** 的 **theme** 为 **coder**
+#### 方法二：在[Released](https://github.com/Xunzhuo/hexo-theme-coder/releases/tag/2.0)下载 ZIP 解压在 /themes 文件夹下
+
+### 2. 修改Hexo目录下的_config.yml 的 **theme** 为 **coder**
 
 ### 3. 修改配置
 
@@ -88,6 +61,14 @@ style: black
 
 # 首页URL
 link: https://www.liuxunzhuo.top
+
+#SEO优化
+
+## 网站描述
+description: 嘿，我是刘训灼～这是我的子站，用于展示写的Hexo主题：Coder。欢迎访问！
+
+## 网站关键词：用英文逗号分割
+keywords: Blog,Hexo,Theme,刘训灼,LiuXunzhuo
 
 #网站标语:
 words: AI 🤖️ Code 🧑‍💻 Life 🌈
@@ -118,6 +99,18 @@ valine:
   appKey: z1FihjWEbS8uIfUQdmCtK7zz
 
 ````
+
+### 4. 404 页面配置：
+
+#### 在hexo跟目录的Source文件夹下创建一个404.md，并写入如下内容:
+
+``` markdown
+---
+title: 404
+type: "404"
+layout: "404"
+---
+```
 
 > 然后你就可以愉快的开始使用啦！😊
 

@@ -1,7 +1,7 @@
 body {
     background-color:   #363636;
     color: #d2d2d2;
-    font-weight: 400;
+    font-weight: 4000;
     font-size: 14px;
     font-family: "Menlo", "Meslo LG", monospace;
     line-height: 1.725;
@@ -16,7 +16,6 @@ a {
 
 a:focus,
 a:hover {
-    color: Chocolate;
     text-decoration: underline;
 }
 
@@ -36,7 +35,7 @@ a:hover {
 }
 
 .hd {
-    width: 50%;
+    width: 55%;
     height: 100%;
     margin: auto;
 }
@@ -436,10 +435,16 @@ label.el-checkbox {
     display: inline-block;
 }
 
+.breadcrumb a {
+font-weight: bold;
+ font-size: 90%;
+}
+
+
 .breadcrumb>li+li:before {
     padding: 0 5px;
     color: #ccc;
-    content: "&\00a0";
+    content: "|";
 }
 
 .breadcrumb>.active {
