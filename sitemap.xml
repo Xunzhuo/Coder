@@ -2,6 +2,13 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>https://www.liuxunzhuo.top/404.html</loc>
+    
+    <lastmod>2020-06-20T06:24:49.537Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>https://www.liuxunzhuo.top/hello-world.html</loc>
     
     <lastmod>2020-06-20T05:44:40.721Z</lastmod>
@@ -12,13 +19,6 @@
     <loc>https://www.liuxunzhuo.top/oishare.html</loc>
     
     <lastmod>2020-06-20T03:53:08.487Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://www.liuxunzhuo.top/404.html</loc>
-    
-    <lastmod>2020-06-20T03:45:04.725Z</lastmod>
     
   </url>
   
