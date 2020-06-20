@@ -39,11 +39,15 @@
 
 ## Coder使用和配置很简单：
 
-### 1. 进入 /Hexo目录/themes：
+### 1. 下载Coder
+
+#### 方法一：进入 /Hexo目录/themes：
 
 ``` shell
 git clone git@github.com:Xunzhuo/hexo-theme-coder.git coder
 ```
+
+#### 方法二：在[Released](https://github.com/Xunzhuo/hexo-theme-coder/releases/tag/2.0)下载 ZIP 解压在 /themes 文件夹下
 
 ### 2. 修改Hexo目录下的**_config.yml** 的 **theme** 为 **coder**
 
