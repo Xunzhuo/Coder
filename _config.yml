@@ -3,6 +3,14 @@ logo_title: 进击の算法
 # 初始化风格 black/light
 style: light
 
+#SEO优化
+
+## 网站描述
+description: 嘿，我是刘训灼～这是我的子站，用于展示写的Hexo主题：Coder。欢迎访问！
+
+## 网站关键词：用英文逗号分割
+keywords: Blog,Hexo,Theme,刘训灼,LiuXunzhuo
+
 # 首页URL
 link: https://www.liuxunzhuo.top
 

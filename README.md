@@ -73,7 +73,7 @@
 ### 1. 进入 /Hexo目录/themes：
 
 ``` shell
-git clone url coder
+git clone git@github.com:Xunzhuo/hexo-theme-coder.git coder
 ```
 
 ### 2. 修改Hexo目录下的**_config.yml** 的 **theme** 为 **coder**
@@ -88,6 +88,14 @@ style: black
 
 # 首页URL
 link: https://www.liuxunzhuo.top
+
+#SEO优化
+
+## 网站描述
+description: 嘿，我是刘训灼～这是我的子站，用于展示写的Hexo主题：Coder。欢迎访问！
+
+## 网站关键词：用英文逗号分割
+keywords: Blog,Hexo,Theme,刘训灼,LiuXunzhuo
 
 #网站标语:
 words: AI 🤖️ Code 🧑‍💻 Life 🌈
@@ -118,6 +126,18 @@ valine:
   appKey: z1FihjWEbS8uIfUQdmCtK7zz
 
 ````
+
+### 4. 404 页面配置：
+
+#### 在hexo跟目录的Source文件夹下创建一个404.md，并写入如下内容:
+
+``` markdown
+---
+title: 404
+type: "404"
+layout: "404"
+---
+```
 
 > 然后你就可以愉快的开始使用啦！😊
 
