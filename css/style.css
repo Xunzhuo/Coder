@@ -1219,12 +1219,11 @@ label.el-checkbox {
   border-radius: 4px;
 }
 .breadcrumb>li {
-  font-size: 100%;
   display: inline-block;
 }
 .breadcrumb a {
   font-weight: bold;
-  font-size: 16px;
+  font-size: 100%;
 }
 .breadcrumb>li+li:before {
   padding: 0 5px;
