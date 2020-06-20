@@ -2,6 +2,20 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>https://www.liuxunzhuo.top/oishare.html</loc>
+    
+    <lastmod>2020-06-20T03:53:08.487Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://www.liuxunzhuo.top/404.html</loc>
+    
+    <lastmod>2020-06-20T03:45:04.725Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>https://www.liuxunzhuo.top/hello-world.html</loc>
     
     <lastmod>2020-06-18T15:54:41.979Z</lastmod>
@@ -47,13 +61,6 @@
     <loc>https://www.liuxunzhuo.top/OJ.html</loc>
     
     <lastmod>2020-05-25T09:58:55.409Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://www.liuxunzhuo.top/oishare.html</loc>
-    
-    <lastmod>2020-05-25T09:58:27.069Z</lastmod>
     
   </url>
   
@@ -110,13 +117,6 @@
     <loc>https://www.liuxunzhuo.top/python-nn.html</loc>
     
     <lastmod>2020-05-25T04:11:34.406Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://www.liuxunzhuo.top/404.html</loc>
-    
-    <lastmod>2020-05-25T03:05:55.214Z</lastmod>
     
   </url>
   
