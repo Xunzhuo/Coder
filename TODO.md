@@ -3,7 +3,7 @@ This is a to-do list which specifies the functions that are expected to be imple
 
 ## Ideas so far
 
--   [ ] User can use a `search bar`  where he or she can type in a keyword and get local search results
+-   [x] User can use a `search bar`  where he or she can type in a keyword and get local search results
 -   [ ] User can delete inappropriate comments
 -   [ ] Tab title change 
 -   [ ] Tags and archives
