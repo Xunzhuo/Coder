@@ -71,14 +71,15 @@ a:hover {
   margin-top: 10px;
   margin-bottom: -20px;
 }
+.site-search-form {
+  padding-top: 30px;
+}
 .site-search-form #local-search-input {
   border-radius: 10px;
   height: 100%;
-  float: right;
   width: 100px;
 }
 #search-logo {
-  float: right;
   padding-right: 10px;
 }
 #local-search-close {

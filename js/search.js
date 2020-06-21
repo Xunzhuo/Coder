@@ -88,7 +88,6 @@ var searchFunc = function (path, search_id, content_id) {
                         str += "</li>";
                     }
                 });
-                str += "</ul>";
                 if (str.indexOf('<li>') === -1) {
                     return $resultContent.innerHTML = BTN + "<ul><span class='local-search-empty'>没有找到内容，请尝试更换检索词。<span></ul>";
                 }
