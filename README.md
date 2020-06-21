@@ -84,7 +84,16 @@ favicon: /img/favicon.ico
 menu:
   关于我👀: /about
   访问主站🎉: https://liuxunzhuo.tech
-  Github🐒: https://github.com/xunzhuo
+  Github🐒: https://github.com/xunzhu
+  
+# 站内关键词搜索 | Local Search
+## 请需先安装对应插件 | You need to insatall the following plugin
+## $ npm install hexo-generator-search --save
+search:
+ enable: true
+ path: search.xml
+ field: post
+ # onload: true
 
 # 代码高亮
 highlight:
