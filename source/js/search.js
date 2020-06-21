@@ -23,7 +23,6 @@ var searchFunc = function (path, search_id, content_id) {
     var BTN = "<i id='local-search-close'>×</i>";
     var $input = document.getElementById(search_id);
     var $resultContent = document.getElementById(content_id);
-    $resultContent.innerHTML = BTN + "<ul><span class='local-search-empty'>首次搜索，正在载入索引文件，请稍后……<span></ul>";
     $.ajax({
         // 0x01. load xml file
         url: path,
@@ -86,38 +85,9 @@ var searchFunc = function (path, search_id, content_id) {
                     // 0x05. show search results
                     if (isMatch) {
                         str += "<li><a href='" + data_url + "' class='search-result-title' target='_blank'>" + orig_data_title + "</a>";
-                        var content = orig_data_content;
-                        if (first_occur >= 0) {
-                            // cut out 100 characters
-                            var start = first_occur - 20;
-                            var end = first_occur + 80;
-
-                            if (start < 0) {
-                                start = 0;
-                            }
-
-                            if (start == 0) {
-                                end = 100;
-                            }
-
-                            if (end > content.length) {
-                                end = content.length;
-                            }
-
-                            var match_content = content.substr(start, end);
-
-                            // highlight all keywords
-                            keywords.forEach(function (keyword) {
-                                var regS = new RegExp(keyword, "gi");
-                                match_content = match_content.replace(regS, "<em class=\"search-keyword\">" + keyword + "</em>");
-                            });
-
-                            str += "<p class=\"search-result\">" + match_content + "...</p>"
-                        }
                         str += "</li>";
                     }
                 });
-                str += "</ul>";
                 if (str.indexOf('<li>') === -1) {
                     return $resultContent.innerHTML = BTN + "<ul><span class='local-search-empty'>没有找到内容，请尝试更换检索词。<span></ul>";
                 }

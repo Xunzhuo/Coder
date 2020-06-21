@@ -1,5 +1,5 @@
 # 当前版本 | Theme Version
-Hexo: "1.2"
+Hexo: "2.1"
 
 # 网站标题 | Title
 logo_title: Title_Name
@@ -55,3 +55,4 @@ valine:
 
 highlight:
   enable: true
+theme: jekyll-theme-hacker

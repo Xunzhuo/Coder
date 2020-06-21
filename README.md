@@ -20,8 +20,6 @@
 + 自己主要方向是NLP、深度学习，Web开发一直都是自学，能力有限，不能太复杂
 + 不复杂不代表不好，博客的极简也是很多人追求的，所以我开发了这个主题，前前后后1个月
 
-> 演示地址 : [点这里](https://www.liuxunzhuo.top)
-
 # Introduction🎙️
 
 ## Coder 是 一个极简的Hexo主题☁️
@@ -41,13 +39,13 @@
 
 ### 1. 下载Coder
 
-#### 方法一：进入 /Hexo目录/themes：
+#### 最新版：进入 /Hexo目录/themes：
 
 ``` shell
 git clone git@github.com:Xunzhuo/hexo-theme-coder.git coder
 ```
 
-#### 方法二：在[Released](https://github.com/Xunzhuo/hexo-theme-coder/releases/tag/2.0)下载 ZIP 解压在 /themes 文件夹下
+#### 稳定版：在[Released](https://github.com/Xunzhuo/hexo-theme-coder/releases/tag/2.0)下载 ZIP 解压在 /themes 文件夹下
 
 ### 2. 修改Hexo目录下的_config.yml 的 **theme** 为 **coder**
 
@@ -123,11 +121,26 @@ layout: "404"
 
 > 然后你就可以愉快的开始使用啦！😊
 
-# Coder后期计划
+# Coder TODO LIST🌟
 
 闲暇时可能会不断扩展这个主题的功能，让Coder更实用～
 
-如果你对这个项目感兴趣也可以一起合作🤝
+- [x] 增加搜索功能🌲
+- [ ] 增加分类页🌲
+- [ ] 增加标签页🌲
+- [ ] 手机端兼容性提高🌲
+- [ ] 文章字数、阅读量统计🌲
+- [ ] 网站 pv uv 统计🌲
+- [ ] 多语言支持🌲
+- [ ] CSS整体美化🌲s
+- [ ] 提高个人定制化功能🌲
+- [ ] **Endless Updating**🌲🌲🌲
 
-## 如果喜欢请送上一个star✨哦～如果你对我的研究感兴趣期待你的follow👬～🌈
+> 如果你对这个项目感兴趣也可以一起合作🤝
+
+---
+
+### 如果喜欢请送上一个star✨哦～
+
+### 如果你对我的研究感兴趣期待你的follow👬～🌈
 
