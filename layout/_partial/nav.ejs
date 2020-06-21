@@ -9,7 +9,7 @@
             <%- js('js/search.js') %>
             <% if (theme.search.enable) { %>
                 <form class="site-search-form">
-                    <input type="text" id="local-search-input" class="st-search-input" />
+                    <i class="fa fa-search" id="search-logo"><input type="text" id="local-search-input" class="st-search-input" /></i>
                 </form>
                 <div id="local-search-result" class="local-search-result-cls"></div>
             <% } %>
@@ -35,7 +35,7 @@
                 //No search result
                 $resultArea.bind("DOMNodeRemoved DOMNodeInserted", function(e) {
                     if (!$(e.target).text()) {
-                        $(".no-result").show(200);
+                        $(".no-result").show(100);
                     } else {
                         $(".no-result").hide();
                     }
@@ -43,6 +43,5 @@
             </script>
 
     </ol>
-
-    <hr class="breadcrumbhr">
+    <hr>
 </div>
