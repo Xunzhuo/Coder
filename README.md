@@ -39,13 +39,13 @@
 
 ### 1. 下载Coder
 
-#### 最新版：进入 /Hexo目录/themes：
++ **最新版**：进入 /Hexo目录/themes：
 
 ``` shell
 git clone git@github.com:Xunzhuo/hexo-theme-coder.git coder
 ```
 
-#### 稳定版：在[Released](https://github.com/Xunzhuo/hexo-theme-coder/releases/tag/2.0)下载 ZIP 解压在 /themes 文件夹下
++ **稳定版**：在[Released](https://github.com/Xunzhuo/hexo-theme-coder/releases/tag/2.0)下载 ZIP 解压在 /themes 文件夹下
 
 ### 2. 修改Hexo目录下的_config.yml 的 **theme** 为 **coder**
 
@@ -132,7 +132,7 @@ layout: "404"
 - [ ] 文章字数、阅读量统计🌲
 - [ ] 网站 pv uv 统计🌲
 - [ ] 多语言支持🌲
-- [ ] CSS整体美化🌲s
+- [ ] CSS整体美化🌲
 - [ ] 提高个人定制化功能🌲
 - [ ] **Endless Updating**🌲🌲🌲
 
