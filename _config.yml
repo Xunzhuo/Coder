@@ -2,7 +2,7 @@
 Hexo: "2.1"
 
 # 网站标题 | Title
-logo_title: Title_Name
+logo_title: Title Name
 
 # 初始化风格 | Default Style "black/light"
 style: black
@@ -55,4 +55,3 @@ valine:
 
 highlight:
   enable: true
-theme: jekyll-theme-hacker
