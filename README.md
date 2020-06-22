@@ -17,8 +17,8 @@
 # Why Coder❓
 
 + 自己从大一就在用Hexo写博客，对Hexo很喜欢，一直想着自己写一个主题
-+ 自己主要方向是NLP、深度学习，Web开发一直都是自学，能力有限，不能太复杂
-+ 不复杂不代表不好，博客的极简也是很多人追求的，所以我开发了这个主题，前前后后1个月
++ 自己主要方向是人工智能，Web开发一直都是自学，能力有限
++ 博客的极简也是很多人追求的，所以我前前后后用了一个月开发了这个主题
 
 # Introduction🎙️
 
@@ -52,59 +52,63 @@ git clone git@github.com:Xunzhuo/hexo-theme-coder.git coder
 ### 3. 修改配置
 
 ````yaml
-# 网站标题
-logo_title: 你网站的名字
-# 初始化风格 black/light
+# 当前版本 | Theme Version
+Hexo: "2.1"
+
+# 网站标题 | Title
+logo_title: Title Name
+
+# 初始化风格 | Default Style "black/light"
 style: black
+#style: light
 
-# 首页URL
-link: https://www.liuxunzhuo.top
+#SEO优化 | SEO settings
 
-#SEO优化
-
-## 网站描述
+## 网站描述 | Description
 description: 嘿，我是刘训灼～这是我的子站，用于展示写的Hexo主题：Coder。欢迎访问！
 
-## 网站关键词：用英文逗号分割
+## 网站关键词：用英文逗号分割 | Keywords
 keywords: Blog,Hexo,Theme,刘训灼,LiuXunzhuo
 
-#网站标语:
-words: AI 🤖️ Code 🧑‍💻 Life 🌈
+# 首页URL | Your URL
+link: Your_URL
 
-# 你的昵称
-author: 1900
-# 中心图标选择男女或者自定义
+#标语 | Your Slogan
+words: Your Words
+
+# 你的昵称 | Your Name
+author: Your Name
+
+# 中心图标选择男女或者自定义 | Gender
 gender: /img/male.png #/img/female.png
 
+# 站点小图标地址 | Small Icon of Your Site
 favicon: /img/favicon.ico
 
-# 菜单栏配置
+# 菜单栏配置 | Nav Bar Settings
 menu:
   关于我👀: /about
   访问主站🎉: https://liuxunzhuo.tech
-  Github🐒: https://github.com/xunzhu
-  
+  GitHub🐒: https://github.com/xunzhuo
+
 # 站内关键词搜索 | Local Search
-## 请需先安装对应插件 | You need to insatall the following plugin
-## $ npm install hexo-generator-search --save
 search:
  enable: true
  path: search.xml
  field: post
  # onload: true
 
-# 代码高亮
-highlight:
-  enable: true
-  
-# 评论配置
-# 请改成自己的 KEY
-# 若关闭valine 设置enable为false
+# Valine 评论系统 | Comments of Valine
+## 请改成自己的 KEY ｜ Replace Your Own Key
+## 若关闭valine 设置enable为false 
 valine:
   enable: true
   appId: NOsswOncKgc8HOxqo9oxIWlX-gzGzoHsz
   appKey: z1FihjWEbS8uIfUQdmCtK7zz
 
+# 代码高亮 ｜ Code Highlight
+highlight:
+  enable: true
 ````
 
 ### 4. 404 页面配置：
