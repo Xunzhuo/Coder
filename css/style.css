@@ -1,4 +1,6 @@
 body {
+  margin: 0;
+  padding: 0;
   background-color: #2c2a29;
   color: #d2d2d2;
   font-weight: 4000;
@@ -31,45 +33,94 @@ a:hover {
   height: 100%;
   margin: auto;
 }
-.logodiv {
-  text-align: center;
+.hero {
+  background-image: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.6)), url("https://picreso.oss-cn-beijing.aliyuncs.com/7.jpg");
+  background-position: center;
+  background-size: 100%;
+  width: 100%;
+  height: calc(55vh);
+  z-index: -1000;
+  color: #d2d2d2;
+  margin: 0;
+  overflow: hidden;
 }
-.titlex {
-  font-size: 30px;
-  font-weight: bold;
-  margin-top: 30px;
-}
-.list {
-  font-size: 17px;
-  padding-left: 25px;
-  padding-right: 25px;
-  height: 30px;
-  cursor: pointer;
-}
-.postname {
-  float: left;
-}
-.posttime {
-  float: right;
-}
-.logopng {
-  width: 150px;
-}
-.breadcrumb {
-  padding: 8px 15px;
-  list-style: none;
-  background-color: initial;
-  border-radius: 0px;
-  text-align: center;
-}
-.jing {
-  color: #1e90ff;
+img {
+  display: block;
 }
 .logot {
   font-weight: bold;
-  font-size: 45px;
-  margin-top: 10px;
-  margin-bottom: -20px;
+  font-size: 55px;
+  margin-top: 75px;
+  margin-bottom: -30px;
+}
+.logodiv {
+  padding-top: 110px;
+  width: 400px;
+  padding-left: 650px;
+  text-align: center;
+}
+.titlex p {
+  font-size: 30px;
+  font-weight: bold;
+  margin-top: 30px;
+  text-align: center;
+}
+.list {
+  text-align: center;
+  font-size: 17px;
+  padding-left: 15px;
+  padding-right: 25px;
+  height: 30px;
+  cursor: pointer;
+  height: 250px;
+  width: 100%;
+  text-align: center;
+  border-radius: 10px;
+}
+.postname {
+  padding-top: 86px;
+  padding-left: 70px;
+  font-size: 35px;
+}
+.hd-head {
+  position: absolute;
+  width: 100%;
+}
+.breadcrumb {
+  top: 0;
+  bottom: 0;
+  margin: auto;
+  height: 50px;
+  width: 97%;
+  float: left;
+  background-color: rgba(44,42,41,0.7);
+  border-radius: 0px;
+  text-align: left;
+}
+#nav-logo {
+  font-size: 23px;
+  padding-right: 20px;
+}
+.breadcrumb>li {
+  padding-top: 8px;
+  display: inline-block;
+}
+.breadcrumb a {
+  font-size: 20px;
+}
+.breadcrumb>li+li:before {
+  padding: 0 10px;
+  color: #ccc;
+  content: "   ";
+}
+.breadcrumb>.active {
+  color: #777;
+}
+.single-page {
+  padding-left: 0px;
+  padding-bottom: 10px;
+  padding-top: 50px;
+  color: #d2d2d2;
 }
 .site-search-form {
   padding-top: 30px;
@@ -85,17 +136,9 @@ a:hover {
 #local-search-close {
   align: center;
 }
-.logot .logo_1 {
-  color: #888;
-}
-.logot .logo_2 {
-  color: #37dd2c;
-}
-.logot .logo_3 {
-  color: #be8355;
-}
 .words {
-  padding-top: 16px;
+  width: 100%;
+  padding-top: 10px;
   font-size: 20px;
 }
 .navd {
@@ -1226,30 +1269,6 @@ label.el-checkbox {
 .el-checkbox.el-checkbox-lg,
 .el-switch.el-switch-lg {
   font-size: 125%;
-}
-.breadcrumb {
-  margin-bottom: 20px;
-  list-style: none;
-  border-radius: 4px;
-}
-.breadcrumb>li {
-  display: inline-block;
-}
-.breadcrumb a {
-  font-weight: bold;
-  font-size: 90%;
-}
-.breadcrumb>li+li:before {
-  padding: 0 5px;
-  color: #ccc;
-  content: "|";
-}
-.breadcrumb>.active {
-  color: #777;
-}
-.breadcrumbhr {
-  margin-top: -15px;
-  margin-bottom: -15px;
 }
 .vcomments {
   margin-top: 20px;

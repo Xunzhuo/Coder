@@ -4,19 +4,6 @@
   
     
     <entry>
-      <title>Announcement 公告💬</title>
-      <link href="/hello-world.html"/>
-      <url>/hello-world.html</url>
-      
-        <content type="html"><![CDATA[<div align ="center">  <h1>    Hi~欢迎访问使用Coder！👏  </h1>  <h2>    仓库在这里<a href="https://github.com/Xunzhuo/hexo-theme-coder" target="_blank" rel="noopener">GitHub</a>  </h2>  <br>  <img  src="https://picreso.oss-cn-beijing.aliyuncs.com/boycoder.png" style="width: 50%;"><img  src="https://picreso.oss-cn-beijing.aliyuncs.com/girlcoder.png" style="width: 50%;"></div>]]></content>
-      
-      
-      
-    </entry>
-    
-    
-    
-    <entry>
       <title>算法竞赛资料整理分享🌲</title>
       <link href="/oishare.html"/>
       <url>/oishare.html</url>
