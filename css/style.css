@@ -74,6 +74,7 @@ img {
   cursor: pointer;
   height: 250px;
   width: 100%;
+  background-size: 100%;
   text-align: center;
   border-radius: 10px;
 }
