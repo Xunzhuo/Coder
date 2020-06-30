@@ -1,8 +1,8 @@
-# zh-CN: 中文简体
+# zh-Hans: 中文简体
 title:
   home: 首页
- # archive: 归档
- # tag: 标签
+  # archive: 归档
+  # tag: 标签
 
 # 导航栏
 nav:
