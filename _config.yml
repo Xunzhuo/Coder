@@ -52,6 +52,9 @@ valine:
   appId: NOsswOncKgc8HOxqo9oxIWlX-gzGzoHsz
   appKey: z1FihjWEbS8uIfUQdmCtK7zz
 
+# visitors count
+counter:
+  enable: true
 
 highlight:
   enable: true
