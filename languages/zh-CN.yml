@@ -1,0 +1,27 @@
+# zh-CN: 中文简体
+title:
+  home: 首页
+ # archive: 归档
+ # tag: 标签
+
+# 导航栏
+nav:
+  search: 搜索
+
+# 导航栏菜单
+menu:
+  home: 首页
+  about: 关于
+
+# 本地搜索
+local_search:
+  input_placeholder: 请输入关键词
+  hits_empty: 没有找到任何搜索结果
+
+# 网站底部
+footer:
+  copyright: 版权所有
+  author: 作者
+  theme: 主题
+  site_uv: 本站访问人数
+  site_pv: 本站浏览总访问量

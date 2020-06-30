@@ -1,0 +1,27 @@
+# en: English
+title:
+  home: Home
+ # archive: Archive
+ # tag: Tag
+
+# Header nav
+nav:
+  search: Search
+
+# Header menu
+menu:
+  home: Home
+  about: About
+
+# Local search
+local_search:
+  input_placeholder: Search for Posts
+  hits_empty: We didn't find any results for the search
+
+# Footer
+footer:
+  copyright: Copyright
+  author: Author
+  theme: Theme
+  site_uv: Unique Visitors
+  site_pv: Page Views
