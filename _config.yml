@@ -1,6 +1,11 @@
 # 当前版本 | Theme Version
 Hexo: "2.1"
 
+#语言 | Language
+# en | zh-Hans
+#请在hexo文件下的"_config.yml"修改language
+language: en
+
 # 网站标题 | Title
 logo_title: Title Name
 
@@ -37,6 +42,7 @@ menu:
   访问主站🎉: https://liuxunzhuo.tech
   GitHub🐒: https://github.com/xunzhuo
 
+
 # 站内关键词搜索 | Local Search
 search:
  enable: true
@@ -52,6 +58,9 @@ valine:
   appId: NOsswOncKgc8HOxqo9oxIWlX-gzGzoHsz
   appKey: z1FihjWEbS8uIfUQdmCtK7zz
 
+# visitors count
+counter:
+  enable: true
 
 highlight:
   enable: true

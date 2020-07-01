@@ -1,15 +1,23 @@
 <div class="footer" id="footer">
-    <p><h4>Copyright © 2020 | Author: <%= theme.author %> | Theme By <a class="theme-author" href="https://github.com/Xunzhuo/hexo-theme-coder" style="font-size:14px; color: #969696">Coder</a></h4>
+    <p><h4><%= __('footer.copyright') %> © 2020 | <%= __('footer.author') %>: <%= theme.author %> | <%= __('footer.theme') %> By <a class="theme-author" href="https://github.com/Xunzhuo/hexo-theme-coder" style="font-size:14px; color: #969696">Coder</a></h4>
+    <% if (theme.counter.enable){ %>
+        <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+        <span id="busuanzi_container_site_pv"><%= __('footer.site_pv') %>: <span id="busuanzi_value_site_pv"></span></span>
+        <span class="post-meta-divider">|</span>
+        <span id="busuanzi_container_site_uv"><%= __('footer.site_uv') %>: <span id="busuanzi_value_site_uv"></span></span>
+    <% } %>
     <label class="el-switch el-switch-blue el-switch-sm" style="vertical-align: sub;">
         <input type="checkbox" name="switch" id="update_style">
         <span class="el-switch-style"></span>
     </label>
+
     <!--         <script type="text/javascript">
     var cnzz_protocol = (("https:" == document.location.protocol) ? "https://" : "http://");
     document.write(unescape("%3Cspan id='cnzz_stat_icon_1278548644'%3E%3C/span%3E%3Cscript src='" + cnzz_protocol + "v1.cnzz.com/stat.php%3Fid%3D1278548644%26show%3Dpic1' type='text/javascript'%3E%3C/script%3E"));
     </script> -->
 </p>
 </div>
+
 <input type="hidden" id="web_style" value="<%= theme.style %>">
 <input type="hidden" id="valine_appid" value="<%= theme.valine.appId %>">
 <input type="hidden" id="valine_appKey" value="<%= theme.valine.appKey %>">
