@@ -16,7 +16,7 @@ menu:
 # Local search
 local_search:
   input_placeholder: Search for Posts
-  hits_empty: We didn't find any results for the search
+  hits_empty: We didn't find any results for the search, please try other keywords
 
 # Footer
 footer:

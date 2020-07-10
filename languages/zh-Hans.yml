@@ -16,7 +16,7 @@ menu:
 # 本地搜索
 local_search:
   input_placeholder: 请输入关键词
-  hits_empty: 没有找到任何搜索结果
+  hits_empty: 没有找到内容，请尝试更换检索词。
 
 # 网站底部
 footer:

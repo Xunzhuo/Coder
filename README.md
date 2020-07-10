@@ -49,7 +49,12 @@ git clone git@github.com:Xunzhuo/hexo-theme-coder.git coder
 
 ### 2. 修改Hexo目录下的_config.yml 的 **theme** 为 **coder**
 
-### 3. 修改配置
+### 3. 语言配置
+
+请在hexo文件下的"_config.yml"修改 **language** 为 **en** 或者 **zh-Hans**， 目前只支持这两种语言
+
+
+### 4. 修改配置
 
 ````yaml
 # 当前版本 | Theme Version
@@ -111,7 +116,7 @@ highlight:
   enable: true
 ````
 
-### 4. 404 页面配置：
+### 5. 404 页面配置：
 
 #### 在hexo跟目录的Source文件夹下创建一个404.md，并写入如下内容:
 
@@ -135,8 +140,8 @@ layout: "404"
 - [ ] 增加文章TOC🌲
 - [ ] 手机端兼容性提高🌲
 - [ ] 文章字数、阅读量统计🌲
-- [ ] 网站 pv uv 统计🌲
-- [ ] 多语言支持🌲
+- [x] 网站 pv uv 统计🌲
+- [x] 多语言支持🌲
 - [ ] CSS整体美化🌲
 - [ ] 提高个人定制化功能🌲
 - [ ] **Endless Updating**🌲🌲🌲
