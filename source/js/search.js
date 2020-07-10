@@ -1,6 +1,7 @@
 // A local search script with the help of [hexo-generator-search](https://github.com/PaicHyperionDev/hexo-generator-search)
-// Copyright (C) 2017
+// Copyright (C) 2020
 // Liam Huang <http://github.com/Liam0205>
+// Zona Hu <http://github.com/Zonahu>
 // This library is free software; you can redistribute it and/or modify
 // it under the terms of the GNU Lesser General Public License as
 // published by the Free Software Foundation; either version 2.1 of the
@@ -89,7 +90,7 @@ var searchFunc = function (path, search_id, content_id) {
                     }
                 });
                 if (str.indexOf('<li>') === -1) {
-                    return $resultContent.innerHTML = BTN + "<ul><span class='local-search-empty'>没有找到内容，请尝试更换检索词。<span></ul>";
+                    return $resultContent.innerHTML = BTN + "<ul><span class='local-search-empty'>We didn't find any results for the search, please try other keywords.<span></ul>";
                 }
                 $resultContent.innerHTML = BTN + str;
             });
