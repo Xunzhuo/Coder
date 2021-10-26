@@ -55,8 +55,8 @@ search:
 ## 若关闭valine 设置enable为false∂
 valine:
   enable: true
-  appId: NOsswOncKgc8HOxqo9oxIWlX-gzGzoHsz
-  appKey: z1FihjWEbS8uIfUQdmCtK7zz
+  appId: 
+  appKey: 
 
 # visitors count
 counter:
