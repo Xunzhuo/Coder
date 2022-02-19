@@ -107,6 +107,13 @@ layout: "404"
 ---
 ```
 
+# Contributors
+
+<a href="https://github.com/merbridge/merbridge/graphs/contributors">
+  <img src="https://contrib.rocks/image?repo=Xunzhuo/Coder" />
+</a>
+
+
 # Coder TODO LIST🌟
 
 - [x] Add local Search🌲
@@ -123,5 +130,5 @@ layout: "404"
 
 ---
 
-### If you like Hexo Coder please give it a star✨～
+### If you like Hexo Coder, please give it a star✨
 
