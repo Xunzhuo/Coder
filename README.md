@@ -12,7 +12,7 @@
 
 # Introduction🎙️ | [中文](README-zh.md)
 
-Coder is a very clean Hexo theme☁️ for Coders.
+Coder is a clean Hexo theme☁️ for Coders.
 
 # How To Use❓
 
